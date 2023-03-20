@@ -1,0 +1,17 @@
+$bg: #eee;
+
+.box {
+   &__title {
+      color: red;
+   }
+   &__image {
+      max-width: 200px;
+   }
+   &__svg {
+      &:hover {
+         path {
+            stroke: red;
+         }
+      }
+   }
+}
