@@ -7,6 +7,7 @@ const devServer = (isDev) => !isDev ? {} : {
       open: true,
       hot: true,
       port: 8080,
+      static: './src'
    }
 };
 
