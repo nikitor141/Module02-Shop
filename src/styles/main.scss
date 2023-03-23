@@ -1,83 +1,230 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,700;1,700&family=Jost:wght@400;500&display=swap');
+@import "reset";
 
-$green: #27300f;
-$orange: #d26a22;
-$white: #fff;
+img {
+   max-width: 100%;
+   height: auto;
+}
 
-$font-jost: 'Jost', sans-serif;
-$font-cormorant: 'Cormorant', serif;
+input,
+textarea {
+   border-radius: 0;
+}
 
 html {
    font-size: 10px;
-}
-body {
-   font-size: 1.6rem;
-   font-family: $font-jost;
+   scroll-behavior: smooth;
 }
 
-.header {
-   max-width: 1440px;
-   margin: 0 auto;
-   padding-left: 15px;
-   padding-right: 15px;
+body {
+   font-size: 1.6rem;
+   font-family: 'Jost', sans-serif;
+   // font-family: 'Cormorant', serif;
+}
+
+a {
+   color: inherit;
+}
+
+button {
+   font-size: inherit;
+   color: inherit
+}
+
+//anchors -------------------------------------------------
+// #foo,... {
+//    scroll-margin-top: var(--header-height);
+// }
+
+//variables -----------------------------------------------
+:root {
+   --green: #27300f;
+   --orange: #d26a22;
+}
+
+//---------------------------------------------------------
+//js common blocks ----------------------------------------
+
+//flex wrapper---------------------------------------------
+.wrapper {
    display: flex;
-   justify-content: space-between;
-   align-items: center;
-   margin-top: 4rem;
-   &__nav {
-      display: flex;
-      list-style-type: none;
-      margin: 0;
-      padding-left: 0;
-      gap: 4.8rem;
-   }
-   &__link {
-      font-size: 1.6rem;
-      color: $green;
-      text-decoration: none;
-      &:hover {
-         color: $orange;
-      }
-   }
-   &__tel {
-      font-size: 1.6rem;
-      color: $green;
-      font-weight: 500;
-      text-decoration: none;
-      &:hover {
-         color: $orange;
-      }
-   }
-   &__cart {
-      display: block;
-      background-color: $orange;
-      width: 3.8rem;
-      height: 3.8rem;
-      border-radius: 100%;
-      background-image: url(../images/cart.svg);
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: 1.7rem 1.5rem;
+   flex-direction: column;
+   min-height: 100%;
+   overflow: hidden;
+   overflow-wrap: break-word;
+}
+
+
+// common -------------------------------------------------
+.container {
+   min-width: 320px;
+   max-width: 1470px; //ширина контентной части
+   padding: 0 15px; // плюсуешь 2x padding к контентной части
+   margin: 0 auto;
+}
+
+//bem blocks ----------------------------------------------
+.burger {
+   width: 3.6rem;
+   height: 3.6rem;
+   border-radius: 50%;
+   border: 1px solid var(--green);
+   background: transparent;
+
+   &__body {
       position: relative;
-      border: 1px solid $orange;
-      &:hover {
-         background-color: $green;
-         border: 1px solid $green;
+      z-index: 3;
+      width: 1.6rem;
+      height: 1.2rem;
+      margin: 0 auto;
+      &::before,&::after {
+         content: '';
+      }
+      &::before,&::after,span {
+         position: absolute;
+         left: 0;
+         width: 100%;
+         height: 2px;
+         background-color: var(--green);
+         transition: 
+            top .15s .15s ease-in,
+            bottom .15s .15s ease-in,
+            rotate .15s ease-in,
+            opacity 0s .15s,
+      }
+      &::before {
+         top: 0;
+      }
+      span {
+         top: calc(50% - 1px);
+      }
+      &::after {
+         bottom: 0;
+      }
+      &.active {
+         &::before,&::after,span {
+            transition: 
+               top .15s ease-in,
+               bottom .15s ease-in,
+               rotate .15s .15s ease-in,
+               opacity 0s .15s,
+         }
+         &::before {
+            top: calc(50% - 1px);
+            rotate: -45deg;
+         }
+         span {
+            opacity: 0;
+         }
+         &::after {
+            bottom: calc(50% - 1px);
+            rotate: 45deg;
+         }
       }
    }
-   &__counter {
-      font-size: .8rem;
-      color: $white;
+}
+//scss  ---------------------------------------------------
+//header --------------------------------------------------
+.header {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   
+   &__fullscreen {
+      display: flex;
+      flex-direction: column;
+      flex: 1 0 100%;
+   }
+   &__top {
+      padding: 4rem 0;
+   }
+
+   &__top-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8rem;
+   }
+
+   &__logo {
+      flex-shrink: 0;
+   }
+
+   &__menu {}
+
+   &__menu-list {
+      display: flex;
+      flex-wrap: wrap;
+   }
+
+   &__menu-item {}
+
+   &__menu-link {
+      display: block;
+      padding: .8rem 2.4rem;
+      color: var(--green);
+      &:hover {
+         color: var(--orange);
+      }
+   }
+
+   &__tel {
+      flex-shrink: 0;
+      color: var(--green);
+      font-weight: 500;
+
+      &:hover {
+         color: var(--orange);
+      }
+   }
+
+   &__cart {
+      flex-shrink: 0;
+      position: relative;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      background: var(--orange) url('../images/cart.svg') center / 16px 14px no-repeat;
+      transition: .3s;
+      &:hover {
+         background-color: var(--green);
+      }
+   }
+
+   &__cart-counter {
       position: absolute;
+      top: .5rem;
       right: 1rem;
-      top: .6rem;
+      color: white;
+      font-size: .8rem;
+   }
+   
+   &__content {
+      flex-grow: 1;
+   }
+   &__content-body {}
+}
+
+//flex main -----------------------------------------------
+.content {
+   flex-grow: 1;
+}
+
+//footer --------------------------------------------------
+//adaptive ------------------------------------------------
+
+@media (min-width: 1025px) {
+   .burger {
+      display: none;
    }
 }
-.logo {
-   display: block;
-   background-image: url(../images/logo.svg);
-   background-repeat: no-repeat;
-   background-size: cover;
-   width: 12.3rem;
-   height: 3.2rem;
-}
+
+@media (max-width: 1024px) {}
+
+@media (min-width: 769px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 530px) {}
+
+//js swap blocks ------------------------------------------
