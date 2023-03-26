@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,700;1,700&family=Jost:wght@400;500&display=swap');
 @import "reset";
 
+//variables -----------------------------------------------
+:root {
+   --green: #27300f;
+   --orange: #d26a22;
+}
+
+//---------------------------------------------------------
+
 img {
    max-width: 100%;
    height: auto;
@@ -20,6 +28,7 @@ body {
    font-size: 1.6rem;
    font-family: 'Jost', sans-serif;
    // font-family: 'Cormorant', serif;
+   color: var(--green);
 }
 
 a {
@@ -36,13 +45,6 @@ button {
 //    scroll-margin-top: var(--header-height);
 // }
 
-//variables -----------------------------------------------
-:root {
-   --green: #27300f;
-   --orange: #d26a22;
-}
-
-//---------------------------------------------------------
 //js common blocks ----------------------------------------
 
 //flex wrapper---------------------------------------------
@@ -124,16 +126,57 @@ button {
    }
 }
 //scss  ---------------------------------------------------
+%title {
+   font-family: 'Cormorant', serif;
+   font-size: clamp(3rem, 5.66vw, 8rem);
+   font-weight: 700;
+   max-width: 13ch;
+   span {
+      display: block;
+      font-style: italic;
+   }
+}
+%subtitle {
+   font-size: 2.4rem;
+   line-height: 1.5em;
+   max-width: 50ch;
+}
+
+%description {
+   margin: 0 0 0 min(8vw, 12rem);
+   font-size: clamp(1.2rem, 2.26vw, 1.8rem);
+   line-height: 1.5em;
+   max-width: 60ch;
+   a {
+      text-decoration: underline;
+   }
+}
+%button {
+   padding: 0 4.6rem;
+   line-height: 6.5rem;
+   color: white;
+   border-radius: 6.5rem;
+   background-color: #d26a22;
+   box-shadow: 0 10px 11px 2px rgba(207, 92, 13, 0.2);
+   transition: .3s;
+   &:hover {
+      box-shadow: 0 10px 11px 2px rgba(207, 92, 13, 0.4);
+   }
+}
 //header --------------------------------------------------
 .header {
    min-height: 100vh;
    display: flex;
    flex-direction: column;
-   
+   background: url("../images/header-bg.png") center/cover no-repeat;
+
    &__fullscreen {
       display: flex;
       flex-direction: column;
       flex: 1 0 100%;
+      background-repeat: no-repeat;
+      background-image: url("../images/cucumber.png"), url("../images/avocado.png"), url("../images/tomato.png"), url("../images/beans.png"), url("../images/pepper.png");
+      background-position: 69rem 0, right -2rem top 4.4rem, right 12.2rem bottom 0, left 0 bottom 4.7rem, 3.8rem 40%;
    }
    &__top {
       padding: 4rem 0;
@@ -161,8 +204,7 @@ button {
 
    &__menu-link {
       display: block;
-      padding: .8rem 2.4rem;
-      color: var(--green);
+      padding: 1.2rem 2.4rem;
       &:hover {
          color: var(--orange);
       }
@@ -170,7 +212,6 @@ button {
 
    &__tel {
       flex-shrink: 0;
-      color: var(--green);
       font-weight: 500;
 
       &:hover {
@@ -201,15 +242,71 @@ button {
    
    &__content {
       flex-grow: 1;
+      padding: 2rem 0 7.5rem;
    }
-   &__content-body {}
+   &__content-body {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   &__text {
+      flex-basis: 50rem;
+   }
+
+   &__title {
+      @extend %title;
+      margin-bottom: 6rem;
+   }
+
+   &__description {
+      @extend %description;
+      margin-bottom: 5.6rem;
+   }
+
+   &__text-button {
+      @extend %button;
+      display: inline-block;
+      margin: 0 0 0 min(8vw, 12rem);
+   }
+
+   &__plate {}
+
+   &__plate-image {
+      img {
+         box-shadow: 35px 25px 80px -20px rgba(38, 47, 15, 0.5);
+         border-radius: 50%;
+      }
+   }
+   &__plate-item {
+
+      &--one {}
+
+      &--two {}
+
+      &--three {}
+   }
+
+   &__plate-info {}
+
+   &__plate-price {}
+
+   &__plate-ingredient {}
+
+   &__plate-dot {}
+
 }
 
 //flex main -----------------------------------------------
 .content {
    flex-grow: 1;
-}
 
+   //temp
+   height: 100vh;
+   background: #eee;
+
+}
 //footer --------------------------------------------------
 //adaptive ------------------------------------------------
 
@@ -221,9 +318,93 @@ button {
 
 @media (max-width: 1024px) {}
 
-@media (min-width: 769px) {}
+@media (min-width: 769px) {
+   .header {
+      &__plate, &__plate-image {
+         border-radius: 50%;
+         border: 1px solid var(--green);
+      }
+      &__plate {
+         position: relative;
+         padding: min(5.5vw, 5.4rem);
+      }
+      &__plate-image {
+         padding: min(2.5vw, 2.4rem);
+      }
 
-@media (max-width: 768px) {}
+      &__plate-item {
+         position: absolute;
+         display: flex;
+         row-gap: 1rem;
+         column-gap: 2rem;
+         align-items: center;
+         background: transparent;
+         text-align: left;
+
+         &:hover {
+            .header__plate-dot {
+               border-color: var(--orange);
+               &::after {
+                  background-color: var(--orange);
+               }
+            }
+         }
+
+         &--one {
+            left: 8.6%;
+            top: 6.4%;
+         }
+         &--two {
+            flex-direction: row-reverse;
+            right: 0;
+            top: 24.7%;
+         }
+         &--three {
+            flex-direction: column-reverse;
+            right: 32%;
+            bottom: -6.8%;
+         }
+      }
+
+      &__plate-info {}
+
+      &__plate-price {
+         display: flex;
+         flex-direction: column;
+      }
+
+      &__plate-ingredient {
+         margin: 0 0 .9rem 0;
+         opacity: .8;
+      }
+   
+      &__plate-dot {
+         width: 2rem;
+         height: 2rem;
+         border: 1px solid var(--green);
+         border-radius: 50%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         &::after {
+            content: "";
+            width: 1.1rem;
+            height: 1.1rem;
+            border-radius: 50%;
+            background-color: var(--green);
+         }
+      }
+   }
+}
+
+@media (max-width: 768px) {
+   .header {
+      &__plate-item {
+         display: none;
+      }
+   }
+}
 
 @media (max-width: 530px) {}
 

@@ -1,6 +1,6 @@
 import './styles/main.scss';
 
-document.querySelector('.burger').addEventListener('click', function () {
+document.querySelector('.burger').addEventListener('click', () => {
    let elmsToActive = [this.querySelector('.burger__body'), document.body, document.querySelector('.header__menu-list')];
    elmsToActive.forEach(item => {
       item.classList.toggle('active');
