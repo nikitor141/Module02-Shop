@@ -17,6 +17,7 @@ module.exports = ({ develop }) => ({
    output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js',
+      assetModuleFilename: 'fonts/[name][ext][query]',
       clean: true,
    },
    plugins: [
@@ -32,6 +33,10 @@ module.exports = ({ develop }) => ({
          {
             test: /\.(?:ico|png|jpg|jpeg|svg)$/i,
             type: 'asset/inline'
+         },
+         {
+            test: /\.(woff|woff2|eot|ttf|otf)$/i,
+            type: 'asset/resource',
          },
          {
             test: /\.html$/i,
