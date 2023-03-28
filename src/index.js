@@ -1,4 +1,27 @@
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import './styles/main.scss';
+
+import Swiper, { Navigation, Pagination } from 'swiper';
+
+const swiper = new Swiper(".offerSwiper", {
+   modules: [Navigation, Pagination],
+   slidesPerView: 3,
+   spaceBetween: 20,
+   slidesPerGroup: 1,
+   loop: true,
+   loopFillGroupWithBlank: true,
+   pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+   },
+   navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+   },
+});
+
 
 document.querySelector('.burger').addEventListener('click', () => {
    let elmsToActive = [this.querySelector('.burger__body'), document.body, document.querySelector('.header__menu-list')];
