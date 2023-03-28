@@ -10,93 +10,91 @@
 
 <body>
    <div class="wrapper">
-      <header class="header">
-         <div class="header__fullscreen">
-            <div class="header__top">
-               <div class="container">
-                  <div class="header__top-body">
-                     <a class="header__logo" href="/index.html">
-                        <picture>
-                           <source srcset="images/logo.svg" media="(max-width:768px)" width="96" height="25">
-                           <img src="images/logo.svg" alt="logo" width="120" height="32">
-                        </picture>
-                     </a>
-                     <nav class="header__menu">
-                        <ul class="header__menu-list">
-                           <li class="header__menu-item">
-                              <a class="header__menu-link" href="#products">Наша продукция</a>
-                           </li>
-                           <li class="header__menu-item">
-                              <a class="header__menu-link" href="#about">О компании</a>
-                           </li>
-                           <li class="header__menu-item">
-                              <a class="header__menu-link" href="#new">Новинки</a>
-                           </li>
-                           <li class="header__menu-item">
-                              <a class="header__menu-link" href="#catalog">Каталог</a>
-                           </li>
-                           <li class="header__menu-item">
-                              <a class="header__menu-link" href="#delivery">Доставка</a>
-                           </li>
-                           <li class="header__menu-item">
-                              <a class="header__menu-link" href="#contacts">Контакты</a>
-                           </li>
-                        </ul>
-                        <button class="burger" aria-label="Меню.">
-                           <div class="burger__body">
-                              <span></span>
-                           </div>
-                        </button>
-                     </nav>
-                     <a class="header__tel" href="tel:+79453425555">+7 945 342 55 55</a>
-                     <button class="header__cart" aria-label="Корзина.">
-                        <span class="header__cart-counter">0</span>
+      <div class="fullscreen">
+         <header class="header">
+            <div class="container">
+               <div class="header__body">
+                  <a class="header__logo" href="/index.html">
+                     <picture>
+                        <source srcset="images/logo.svg" media="(max-width:768px)" width="96" height="25">
+                        <img src="images/logo.svg" alt="logo" width="120" height="32">
+                     </picture>
+                  </a>
+                  <nav class="header__menu">
+                     <ul class="header__menu-list">
+                        <li class="header__menu-item">
+                           <a class="header__menu-link" href="#products">Наша продукция</a>
+                        </li>
+                        <li class="header__menu-item">
+                           <a class="header__menu-link" href="#about">О компании</a>
+                        </li>
+                        <li class="header__menu-item">
+                           <a class="header__menu-link" href="#new">Новинки</a>
+                        </li>
+                        <li class="header__menu-item">
+                           <a class="header__menu-link" href="#catalog">Каталог</a>
+                        </li>
+                        <li class="header__menu-item">
+                           <a class="header__menu-link" href="#delivery">Доставка</a>
+                        </li>
+                        <li class="header__menu-item">
+                           <a class="header__menu-link" href="#contacts">Контакты</a>
+                        </li>
+                     </ul>
+                     <button class="burger" aria-label="Меню.">
+                        <div class="burger__body">
+                           <span></span>
+                        </div>
+                     </button>
+                  </nav>
+                  <a class="header__tel" href="tel:+79453425555">+7 945 342 55 55</a>
+                  <button class="header__cart" aria-label="Корзина.">
+                     <span class="header__cart-counter">0</span>
+                  </button>
+               </div>
+            </div>
+         </header>
+         <section class="hero">
+            <div class="container">
+               <div class="hero__body">
+                  <div class="hero__text">
+                     <h1 class="hero__title">Здоровая еда - <span>это просто!</span></h1>
+                     <p class="hero__description">
+                        Сеть магазинов полезных продуктов питания, производство которых
+                        основано на&nbsp;принципах и&nbsp;стандартах органического чистых продуктов
+                     </p>
+                     <a class="hero__text-button" href="#catalog">Перейти в каталог</a>
+                  </div>
+                  <div class="hero__plate">
+                     <div class="hero__plate-image">
+                        <img src="images/plate.png" alt="Тарелка с едой" width="609" height="606">
+                     </div>
+                     <button class="hero__plate-item hero__plate-item--one">
+                        <span class="hero__plate-info">
+                           <span class="hero__plate-ingredient">Авокадо</span>
+                           <span class="hero__plate-price">134 руб</span>
+                        </span>
+                        <span class="hero__plate-dot"></span>
+                     </button>
+                     <button class="hero__plate-item hero__plate-item--two">
+                        <span class="hero__plate-info">
+                           <span class="hero__plate-ingredient">Картофель</span>
+                           <span class="hero__plate-price">169 руб</span>
+                        </span>
+                        <span class="hero__plate-dot"></span>
+                     </button>
+                     <button class="hero__plate-item hero__plate-item--three">
+                        <span class="hero__plate-info">
+                           <span class="hero__plate-ingredient">Томаты</span>
+                           <span class="hero__plate-price">215 руб</span>
+                        </span>
+                        <span class="hero__plate-dot"></span>
                      </button>
                   </div>
                </div>
             </div>
-            <div class="header__content">
-               <div class="container">
-                  <div class="header__content-body">
-                     <div class="header__text">
-                        <h1 class="header__title">Здоровая еда - <span>это просто!</span></h1>
-                        <p class="header__description">
-                           Сеть магазинов полезных продуктов питания, производство которых
-                           основано на&nbsp;принципах и&nbsp;стандартах органического чистых продуктов
-                        </p>
-                        <a class="header__text-button" href="#catalog">Перейти в каталог</a>
-                     </div>
-                     <div class="header__plate">
-                        <div class="header__plate-image">
-                           <img src="images/plate.png" alt="Тарелка с едой" width="609" height="606">
-                        </div>
-                        <button class="header__plate-item header__plate-item--one">
-                           <span class="header__plate-info">
-                              <span class="header__plate-ingredient">Авокадо</span>
-                              <span class="header__plate-price">134 руб</span>
-                           </span>
-                           <span class="header__plate-dot"></span>
-                        </button>
-                        <button class="header__plate-item header__plate-item--two">
-                           <span class="header__plate-info">
-                              <span class="header__plate-ingredient">Картофель</span>
-                              <span class="header__plate-price">169 руб</span>
-                           </span>
-                           <span class="header__plate-dot"></span>
-                        </button>
-                        <button class="header__plate-item header__plate-item--three">
-                           <span class="header__plate-info">
-                              <span class="header__plate-ingredient">Томаты</span>
-                              <span class="header__plate-price">215 руб</span>
-                           </span>
-                           <span class="header__plate-dot"></span>
-                        </button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </header>
+         </section>
+      </div>
       <main class="content"></main>
       <footer class="footer"></footer>
    </div>

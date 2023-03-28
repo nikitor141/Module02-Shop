@@ -128,7 +128,7 @@ button {
 //scss  ---------------------------------------------------
 %title {
    font-family: 'Cormorant', serif;
-   font-size: clamp(3rem, 5.66vw, 8rem);
+   font-size: 8rem;
    font-weight: 700;
    max-width: 13ch;
    span {
@@ -143,8 +143,8 @@ button {
 }
 
 %description {
-   margin: 0 0 0 min(8vw, 12rem);
-   font-size: clamp(1.2rem, 2.26vw, 1.8rem);
+   margin: 0 0 0 12rem;
+   font-size: 1.8rem;
    line-height: 1.5em;
    max-width: 60ch;
    a {
@@ -163,26 +163,21 @@ button {
       box-shadow: 0 1rem 1.1rem .2rem rgba(207, 92, 13, 0.4);
    }
 }
-//header --------------------------------------------------
-.header {
+// --------------------------------------------------------
+.fullscreen {
    min-height: 100vh;
    display: flex;
    flex-direction: column;
-   background: url("../images/header-bg.png") center/cover no-repeat;
+   background-repeat: no-repeat;
+   background-image: url("../images/cucumber.png"), url("../images/avocado.png"), url("../images/tomato.png"), url("../images/beans.png"), url("../images/pepper.png"), url("../images/header-bg.png");
+   background-position: 69rem 0, right -2rem top 4.4rem, right 12.2rem bottom 0, left 0 bottom 4.7rem, 3.8rem 40%, center;
+   background-size: auto, auto, auto, auto, auto, cover;
+}
+//header --------------------------------------------------
+.header {
+   padding: 4rem 0;
 
-   &__fullscreen {
-      display: flex;
-      flex-direction: column;
-      flex: 1 0 100%;
-      background-repeat: no-repeat;
-      background-image: url("../images/cucumber.png"), url("../images/avocado.png"), url("../images/tomato.png"), url("../images/beans.png"), url("../images/pepper.png");
-      background-position: 69rem 0, right -2rem top 4.4rem, right 12.2rem bottom 0, left 0 bottom 4.7rem, 3.8rem 40%;
-   }
-   &__top {
-      padding: 4rem 0;
-   }
-
-   &__top-body {
+   &__body {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -205,6 +200,8 @@ button {
    &__menu-link {
       display: block;
       padding: 1.2rem 2.4rem;
+      transition: .3s;
+
       &:hover {
          color: var(--orange);
       }
@@ -213,6 +210,7 @@ button {
    &__tel {
       flex-shrink: 0;
       font-weight: 500;
+      transition: .3s;
 
       &:hover {
          color: var(--orange);
@@ -227,6 +225,7 @@ button {
       border-radius: 50%;
       background: var(--orange) url('../images/cart.svg') center / 1.6rem 1.4rem no-repeat;
       transition: .3s;
+
       &:hover {
          background-color: var(--green);
       }
@@ -239,12 +238,25 @@ button {
       color: white;
       font-size: .8rem;
    }
-   
-   &__content {
-      flex-grow: 1;
-      padding: 2rem 0 7.5rem;
-   }
-   &__content-body {
+}
+
+//flex main -----------------------------------------------
+.content {
+   flex-grow: 1;
+
+   //temp
+   height: 100vh;
+   background: #eee;
+
+}
+
+.hero {
+   flex-grow: 1;
+   display: flex;
+   align-items: center;
+   padding: 2rem 0 7.5rem;
+
+   &__body {
       display: flex;
       gap: 3rem;
       align-items: center;
@@ -268,7 +280,7 @@ button {
    &__text-button {
       @extend %button;
       display: inline-block;
-      margin: 0 0 0 min(8vw, 12rem);
+      margin: 0 0 0 12rem;
    }
 
    &__plate {}
@@ -277,6 +289,7 @@ button {
       img {
          box-shadow: 3.5rem 2.5rem 8rem -2rem rgba(38, 47, 15, 0.5);
          border-radius: 50%;
+         width: 60.9rem;
       }
    }
    &__plate-item {
@@ -295,17 +308,6 @@ button {
    &__plate-ingredient {}
 
    &__plate-dot {}
-
-}
-
-//flex main -----------------------------------------------
-.content {
-   flex-grow: 1;
-
-   //temp
-   height: 100vh;
-   background: #eee;
-
 }
 //footer --------------------------------------------------
 //adaptive ------------------------------------------------
@@ -319,17 +321,17 @@ button {
 @media (max-width: 1024px) {}
 
 @media (min-width: 769px) {
-   .header {
+   .hero {
       &__plate, &__plate-image {
          border-radius: 50%;
          border: .1rem solid var(--green);
       }
       &__plate {
          position: relative;
-         padding: min(5.5vw, 5.4rem);
+         padding: 5.4rem;
       }
       &__plate-image {
-         padding: min(2.5vw, 2.4rem);
+         padding: 2.4rem;
       }
 
       &__plate-item {
@@ -342,27 +344,26 @@ button {
          text-align: left;
 
          &:hover {
-            .header__plate-dot {
+            .hero__plate-dot {
                border-color: var(--orange);
                &::after {
                   background-color: var(--orange);
                }
             }
          }
-
          &--one {
-            left: 8.6%;
-            top: 6.4%;
+            left: 6.6rem;
+            top: 4.9rem;
          }
          &--two {
             flex-direction: row-reverse;
             right: 0;
-            top: 24.7%;
+            top: 18.8rem;
          }
          &--three {
             flex-direction: column-reverse;
-            right: 32%;
-            bottom: -6.8%;
+            right: 18.9rem;
+            bottom: -2.9rem;
          }
       }
 
@@ -386,8 +387,10 @@ button {
          display: flex;
          align-items: center;
          justify-content: center;
+         transition: .3s;
 
          &::after {
+            transition: .3s;
             content: "";
             width: 1.1rem;
             height: 1.1rem;
@@ -399,7 +402,7 @@ button {
 }
 
 @media (max-width: 768px) {
-   .header {
+   .hero {
       &__plate-item {
          display: none;
       }
