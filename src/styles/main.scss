@@ -321,6 +321,7 @@ button {
    
    &-slide {
       position: relative;
+      height: auto;
       border-radius: 2rem;
       box-shadow: inset 0 0 0 .1rem rgba($green, 0.4);
       transition: box-shadow .3s;
@@ -361,12 +362,12 @@ button {
    }
 
    &-button-next {
-      right: 0;
+      right: -.8rem;
    }
 
    &-button-prev {
       left: auto;
-      right: 8.2rem;
+      right: 7.4rem;
    }
 }
 
@@ -393,8 +394,11 @@ button {
    }
 
    &__card {
-      padding: 22rem 16rem 4rem 4rem;
+      padding: 8rem 16.5rem 4rem 4rem;
+      min-height: 52rem;
       overflow: hidden;
+      display: flex;
+      align-items: flex-end;
       &:hover {
          .offer__card-content {
             transform: none;
