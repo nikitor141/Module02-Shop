@@ -399,7 +399,22 @@ button {
       overflow: hidden;
       display: flex;
       align-items: flex-end;
+      position: relative;
+      
+      &::before {
+         content: "";
+         position: absolute;
+         z-index: 0;
+         transition: .3s;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%
+      }
       &:hover {
+         &::before {
+            background-color: rgba(255, 255, 255, 0.55);
+         }
          .offer__card-content {
             transform: none;
             *:not(.offer__card-title) {
@@ -410,6 +425,8 @@ button {
    }
 
    &__card-content {
+      position: relative;
+      z-index: 1;
       transition: .3s;
       transform: translateY(calc(100% - 3rem));
       *:not(.offer__card-title) {
@@ -451,6 +468,65 @@ button {
       right: .1rem;
       z-index: -1;
    }
+}
+
+.features {
+   padding: 5.6rem 0 14.7rem;
+   background: url("../images/features-bg.png") center / cover no-repeat;
+
+   &__body {}
+
+   &__title {
+      @extend %title;
+      margin: 0 0 6rem 0;
+   }
+
+   &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__description {
+      @extend %description;
+   }
+
+   &__items {
+      display: flex;
+      gap: 8.7rem;
+   }
+
+   &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: 'Cormorant', serif;
+      font-size: 3rem;
+      font-style: italic;
+      font-weight: 700;
+
+      &::before {
+         content: "";
+         width: 8.7rem;
+         height: 8.7rem;
+         border-radius: 50%;
+         border: .1rem solid rgba($green, 0.4);
+         margin: 0 0 2rem 0;
+      }
+
+      &--one::before {
+        background: url("../images/health.svg") center / 4.3rem no-repeat; 
+      }
+   
+      &--two::before {
+         background: url("../images/traditions.svg") center / 3.9rem no-repeat;
+      }
+   
+      &--three::before {
+         background: url("../images/taste.svg") center / 4.5rem no-repeat;
+      }
+   }
+
 }
 
 //footer --------------------------------------------------
