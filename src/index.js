@@ -23,7 +23,7 @@ const swiper = new Swiper(".offerSwiper", {
 });
 
 
-document.querySelector('.burger').addEventListener('click', () => {
+document.querySelector('.burger').addEventListener('click', function () {
    let elmsToActive = [this.querySelector('.burger__body'), document.body, document.querySelector('.header__menu-list')];
    elmsToActive.forEach(item => {
       item.classList.toggle('active');
@@ -37,4 +37,9 @@ document.querySelector('.burger').addEventListener('click', () => {
          }
       })
    }
+})
+
+document.querySelectorAll('.offer__card-content').forEach(item => {
+   let titleRemHeight = item.querySelector('.offer__card-title').offsetHeight / 10;
+   item.style.transform = `translateY(calc(100% - ${titleRemHeight}rem))`;
 })

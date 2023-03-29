@@ -73,6 +73,7 @@ button {
    background: transparent;
 
    &__body {
+      display: block;
       position: relative;
       z-index: 3;
       width: 1.6rem;
@@ -400,6 +401,7 @@ button {
       display: flex;
       align-items: flex-end;
       position: relative;
+      z-index: 0;
       
       &::before {
          content: "";
@@ -416,7 +418,7 @@ button {
             background-color: rgba(255, 255, 255, 0.55);
          }
          .offer__card-content {
-            transform: none;
+            transform: none !important;
             *:not(.offer__card-title) {
                opacity: 1;
             }
@@ -428,7 +430,7 @@ button {
       position: relative;
       z-index: 1;
       transition: .3s;
-      transform: translateY(calc(100% - 3rem));
+
       *:not(.offer__card-title) {
          transition: .3s;
          opacity: 0;
@@ -466,6 +468,8 @@ button {
       position: absolute;
       top: .1rem;
       right: .1rem;
+      max-width: calc(100% - .2rem);
+      max-height: calc(100% - .2rem);
       z-index: -1;
    }
 }
@@ -515,15 +519,15 @@ button {
       }
 
       &--one::before {
-        background: url("../images/health.svg") center / 4.3rem no-repeat; 
+        background: url("../images/health.png") center / 4.3rem no-repeat; 
       }
    
       &--two::before {
-         background: url("../images/traditions.svg") center / 3.9rem no-repeat;
+         background: url("../images/traditions.png") center / 3.9rem no-repeat;
       }
    
       &--three::before {
-         background: url("../images/taste.svg") center / 4.5rem no-repeat;
+         background: url("../images/taste.png") center / 4.5rem no-repeat;
       }
    }
 
