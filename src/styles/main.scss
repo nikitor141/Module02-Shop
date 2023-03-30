@@ -39,6 +39,18 @@ button {
    color: inherit
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+input[type=number] {
+   appearance: textfield;
+  -moz-appearance: textfield;
+}
+
 //anchors -------------------------------------------------
 // #foo,... {
 //    scroll-margin-top: var(--header-height);
@@ -162,7 +174,8 @@ button {
    box-shadow: 0 1rem 1.1rem .2rem rgba($orange, 0.2);
    transition: .3s;
    &:hover {
-      box-shadow: 0 1rem 1.1rem .2rem rgba($orange, 0.4);
+      background-color: #bf601f;
+      box-shadow: 0 1rem 1.1rem .2rem rgba($orange, 0.3);
    }
 }
 %card-title {
@@ -173,6 +186,31 @@ button {
 %card-description {
    line-height: 1.5em;
    color: rgba($green, 0.7);
+}
+%card-shadow {
+   position: relative;
+      height: auto;
+      border-radius: 2rem;
+      box-shadow: inset 0 0 0 .1rem rgba($green, 0.4);
+      transition: box-shadow .3s;
+      &::after {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         border-radius: 2rem;
+         opacity: 0;
+         box-shadow: inset 0 0 0 .3rem rgba($green, 0.4);
+         transition: opacity .3s;
+      }
+      &:hover {
+         box-shadow: inset 0 0 0 .3rem rgba($green, 0);
+         &::after {
+            opacity: 1;
+         }
+      }
 }
 // --------------------------------------------------------
 .fullscreen {
@@ -317,33 +355,16 @@ button {
    flex-grow: 1;
 }
 
+.slider {
+   overflow: hidden;
+   padding: 6.8rem 0 0 0;
+}
+
 .swiper {
    overflow: initial;
    
    &-slide {
-      position: relative;
-      height: auto;
-      border-radius: 2rem;
-      box-shadow: inset 0 0 0 .1rem rgba($green, 0.4);
-      transition: box-shadow .3s;
-      &::after {
-         content: "";
-         position: absolute;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         border-radius: 2rem;
-         opacity: 0;
-         box-shadow: inset 0 0 0 .3rem rgba($green, 0.4);
-         transition: opacity .3s;
-      }
-      &:hover {
-         box-shadow: inset 0 0 0 .3rem rgba($green, 0);
-         &::after {
-            opacity: 1;
-         }
-      }
+      @extend %card-shadow;
    }
       
    &-pagination {}
@@ -386,12 +407,6 @@ button {
    &__subtitle {
       @extend %subtitle;
       margin: 0 0 3.2rem 0;
-   }
-
-   &__slider {
-      overflow: hidden;
-      position: relative;
-      padding: 6.8rem 0 0 0;
    }
 
    &__card {
@@ -454,12 +469,18 @@ button {
       align-items: center;
       font-weight: 500;
       text-transform: uppercase;
+      &:hover {
+         &::before {
+            rotate: 90deg;
+         }
+      }
 
       &::before {
          content: "";
          width: 3rem;
          height: 3rem;
          margin: 0 2rem 0 0;
+         transition: .3s;
          background: url("../images/plus.svg") center / contain no-repeat;
       }
    }
@@ -489,6 +510,7 @@ button {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 3rem;
    }
 
    &__description {
@@ -519,19 +541,231 @@ button {
       }
 
       &--one::before {
-        background: url("../images/health.png") center / 4.3rem no-repeat; 
+        background: url("../images/health.svg") center / 4.3rem no-repeat; 
       }
    
       &--two::before {
-         background: url("../images/traditions.png") center / 3.9rem no-repeat;
+         background: url("../images/traditions.svg") center / 3.9rem no-repeat;
       }
    
       &--three::before {
-         background: url("../images/taste.png") center / 4.5rem no-repeat;
+         background: url("../images/taste.svg") center / 4.5rem no-repeat;
       }
    }
 
 }
+
+.trends {
+   padding: 6rem 0 13.4rem;
+   background: url("../images/trends-bg.png") center / cover no-repeat;
+
+   &__body {}
+
+   &__title {
+      @extend %title;
+      margin: 0 0 5.8rem 0;
+      span {
+         display: initial;
+      }
+   }
+
+   &__subtitle {
+      @extend %subtitle;
+      margin: 0 0 1.8rem 0;
+   }
+}
+
+.product-card {
+   @extend %card-shadow;
+   padding: 3rem 2rem 4rem;
+   display: flex;
+   flex-direction: column;
+
+   &__image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 1.5rem 0;
+      flex-grow: 1;
+   }
+
+   &__title {
+      font-family: 'Cormorant', serif;
+      font-size: 3rem;
+      font-weight: 700px;
+      margin: 0 0 2.8rem 0;
+   }
+
+   &__description {
+      opacity: .7;
+      line-height: 1.5em;
+      margin: 0 0 1.9rem 0;
+      max-width: 25ch;
+   }
+
+   &__price {
+      font-size: 2.4rem;
+      margin: 0 0 3rem 0;
+   }
+
+   &__bottom {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.8rem;
+   }
+
+   &__counter {
+      display: flex;
+   }
+
+   &__counter-button {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      opacity: .4;
+      border: 1px solid $green;
+      transition: .3s;
+
+      &:hover {
+         opacity: 1;
+      }
+      &--minus {
+         background: url("../images/counter-minus.svg") center / 1.4rem no-repeat;
+      }
+      &--plus {
+         background: url("../images/counter-plus.svg") center / 1.4rem no-repeat;
+      }
+   }
+
+   &__counter-input {
+      background-color: transparent;
+      width: 3.3rem;
+      text-align: center;
+      font-size: 2.4rem;
+      &:focus {
+         outline: none;
+      }
+   }
+
+   &__button {
+      @extend %button;
+      padding: 0 3rem;
+      font-size: 1.4rem;
+      line-height: 5.5rem;
+   }
+}
+.product-card--big {
+   padding: 3rem 4rem 4rem;
+   .product-card {
+   
+      &__title {
+         margin: 0 0 3.3rem 0;
+      }
+      &__description {
+         margin: 0 0 3.2rem 0;
+         font-size: 1.8rem;
+      }
+      &__price {
+         margin: 0 0 3.9rem 0;
+      }
+      &__bottom {
+         gap: 4rem;
+      }
+      &__counter-button {
+         width: 5rem;
+         height: 5rem;
+      }
+      &__counter-input {
+         width: 4.8rem;
+      }
+      &__button {
+         @extend %button;
+         font-size: 1.6rem;
+      }
+   }
+}
+
+.catalog {
+   padding: 6.8rem 0 13.7rem;
+   background: url("../images/catalog-bg.png") center / cover no-repeat;
+
+   &__body {}
+
+   &__title {
+      @extend %title;
+      margin: 0 0 5.7rem 0;
+   }
+
+   &__subtitle {
+      @extend %subtitle;
+      margin: 0 0 9rem 0;
+   }
+
+   &__wrapper {}
+
+   &__tabs {
+      display: flex;
+      gap: 2rem;
+      margin: 0 0 5rem 0;
+   }
+
+   &__tab {}
+
+   &__tab-button {
+      height: 100%;
+      min-width: 23rem;
+      padding: 2.1rem 3.5rem;
+      color: rgba($green, 0.5);
+      font-size: 1.8rem;
+      border: 1px solid $green;
+      border-radius: 7rem;
+      background-color: transparent;
+      transition: .3s;
+
+      &:hover {
+         color: $orange;
+         border-color: $orange;
+      }
+   }
+
+   &__items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      gap: 2rem;
+      margin: 0 0 6rem 0;
+   }
+
+   &__more {
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+      text-transform: uppercase;
+      color: rgba($green, 0.8);
+      background-color: transparent;
+      transition: .3s;
+
+      &:hover {
+         color: $green;
+      }
+      &:active {
+         &::before {
+            rotate: -45deg;
+         }
+      }
+      &::before {
+         transition: .3s;
+         content: "";
+         width: 2.5rem;
+         height: 2.5rem;
+         margin: 0 2.7rem 0 0;
+         background: url("../images/refresh.png") center / contain no-repeat;
+      }
+   }
+}
+
 
 //footer --------------------------------------------------
 //adaptive ------------------------------------------------
@@ -632,12 +866,25 @@ button {
          }
       }
    }
+   .catalog {
+      &__tabs {
+         flex-wrap: wrap;
+      }
+   }
 }
 
 @media (max-width: 768px) {
    .hero {
       &__plate-item {
          display: none;
+      }
+   }
+   .catalog {
+      &__tabs {
+         overflow: auto;
+         scrollbar-width: none;
+         margin: 0 -1.5rem;
+         padding: 0 1.5rem;
       }
    }
 }
