@@ -142,7 +142,7 @@ input[type=number] {
    font-family: 'Cormorant', serif;
    font-size: 8rem;
    font-weight: 700;
-   max-width: 13ch;
+   max-width: 17ch;
    span {
       display: block;
       font-style: italic;
@@ -219,9 +219,21 @@ input[type=number] {
    display: flex;
    flex-direction: column;
    background-repeat: no-repeat;
-   background-image: url("../images/cucumber.png"), url("../images/avocado.png"), url("../images/tomato.png"), url("../images/beans.png"), url("../images/pepper.png"), url("../images/hero-bg.png");
-   background-position: 69rem 0, right -2rem top 4.4rem, right 12.2rem bottom 0, left 0 bottom 4.7rem, 3.8rem 40%, center;
+   background-image: 
+      url("../images/cucumber.png"),
+      url("../images/avocado.png"), 
+      url("../images/tomato.png"), 
+      url("../images/beans.png"), 
+      url("../images/pepper.png"),
+      url("../images/hero-bg.png");
    background-size: auto, auto, auto, auto, auto, cover;
+   background-position:
+    69rem 0, 
+    right -2rem top 4.4rem, 
+    right 12.2rem bottom 0, 
+    left 0 bottom 4.7rem, 
+    3.8rem 40%,
+    center;
 }
 .hero {
    flex-grow: 1;
@@ -595,9 +607,7 @@ input[type=number] {
    }
 
    &__title {
-      font-family: 'Cormorant', serif;
-      font-size: 3rem;
-      font-weight: 700;
+      @extend %card-title;
       margin: 0 0 2.8rem 0;
    }
 
@@ -632,15 +642,19 @@ input[type=number] {
       opacity: .4;
       border: 1px solid $green;
       transition: .3s;
+      background-position: center;
+      background-size: 1.4rem;
+      background-repeat: no-repeat;
+      background-color: transparent;
 
       &:hover {
          opacity: 1;
       }
       &--minus {
-         background: url("../images/counter-minus.svg") center / 1.4rem no-repeat;
+         background-image: url("../images/counter-minus.svg");
       }
       &--plus {
-         background: url("../images/counter-plus.svg") center / 1.4rem no-repeat;
+         background-image: url("../images/counter-plus.svg");
       }
    }
 
@@ -771,6 +785,177 @@ input[type=number] {
          height: 2.5rem;
          margin: 0 2.7rem 0 0;
          background: url("../images/refresh.png") center / contain no-repeat;
+      }
+   }
+}
+
+.delivery {
+   padding: 1.9rem 0 14rem;
+   background: url("../images/delivery-bg.png") center / cover no-repeat;
+
+   &__body {}
+
+   &__title {
+      @extend %title;
+      margin: 0 0 7.8rem 0;
+      span {
+         display: initial;
+      }
+   }
+
+   &__content {
+      margin: 0 0 0 12rem;
+      display: flex;
+      gap: 16.6rem;
+   }
+
+   &__info-block {
+      flex: 1;
+   }
+
+   &__description {
+      @extend %description;
+      margin: 0;
+      
+      &:not(:last-child) {
+         margin: 0 0 4rem 0;
+      }
+      span {
+         display: block;
+         color: $orange;
+      }
+   }
+
+   &__payment {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      opacity: .4;
+      transition: .3s;
+
+      &:hover {
+         opacity: 1;
+      }
+   }
+
+   &__payment-item {
+      height: 3.2rem;
+      img {
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+}
+
+.contacts {
+   padding: 6.5rem 0 16rem;
+   background: url("../images/contacts-bg.png") center / cover no-repeat;
+
+   &__body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+   }
+
+   &__info {
+      flex-grow: 1;
+   }
+
+   &__title {
+      @extend %title;
+      margin: 0 0 6rem 0;
+   }
+
+   &__description {
+      @extend %description;
+      margin-bottom: 6.5rem;
+      max-width: 40ch;
+   }
+
+   &__links {
+      margin: 0 0 0 12rem;
+   }
+
+   &__links-item {
+      display: flex;
+      align-items: center;
+      &::before {
+         background-position: center;
+         background-size: contain;
+         background-repeat: no-repeat;
+         width: 2.9rem;
+         margin: 0 3.1rem 0 0;
+      }
+
+      &:not(:last-child) {
+         margin: 0 0 2.5rem 0;
+      }
+      &--tel {
+         &::before {
+            content: "";
+            height: 2.5rem;
+            background-image: url("../images/tel.svg");
+         }
+      }
+      &--email {
+         &::before {
+            content: "";
+            height: 1.9rem;
+            background-image: url("../images/email.svg");
+         }
+      }
+   }
+
+   &__link {
+      font-size: 2.4rem;
+      font-weight: 500;
+   }
+}
+
+.contact-form {
+   padding: 4rem 6rem;
+   border: 1px solid rgba($green, 0.4);
+   border-radius: 2rem;
+   min-width: 58.9rem;
+
+   &__title {
+      @extend %card-title;
+      margin: 0 0 3.8rem 0;
+   }
+
+   &__label {
+      display: block;
+      margin: 0 0 1.2rem .6rem;
+      font-size: 1.2rem;
+   }
+
+   &__input {
+      display: block;
+      width: 100%;
+      padding: 2.2rem 3rem;
+      margin: 0 0 3rem 0;
+      border-radius: 2rem;
+      border: 1px solid rgba($green, 0.4);
+      outline: none;
+      &:focus {
+         border-color: $green;
+      }
+   }
+
+   &__submit {
+      @extend %button;
+      margin: 1rem 0 1.9rem 0;
+   }
+
+   &__check {
+      opacity: .6;
+      font-size: 1.2rem;
+      line-height: 1.5em;
+
+      a {
+         display: block;
+         text-decoration: underline;
       }
    }
 }
