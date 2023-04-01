@@ -388,7 +388,7 @@ input[type=number] {
       transition: .3s;
       opacity: .4;
       &::after {
-         font-size: 18px;
+         font-size: 1.8rem;
       }
 
       &:hover {
@@ -640,7 +640,7 @@ input[type=number] {
       height: 4rem;
       border-radius: 50%;
       opacity: .4;
-      border: 1px solid $green;
+      border: .1rem solid $green;
       transition: .3s;
       background-position: center;
       background-size: 1.4rem;
@@ -743,7 +743,7 @@ input[type=number] {
       padding: 2.1rem 3.5rem;
       color: rgba($green, 0.5);
       font-size: 1.8rem;
-      border: 1px solid $green;
+      border: .1rem solid $green;
       border-radius: 7rem;
       background-color: transparent;
       transition: .3s;
@@ -915,7 +915,7 @@ input[type=number] {
 
 .contact-form {
    padding: 4rem 6rem;
-   border: 1px solid rgba($green, 0.4);
+   border: .1rem solid rgba($green, 0.4);
    border-radius: 2rem;
    min-width: 58.9rem;
 
@@ -936,7 +936,7 @@ input[type=number] {
       padding: 2.2rem 3rem;
       margin: 0 0 3rem 0;
       border-radius: 2rem;
-      border: 1px solid rgba($green, 0.4);
+      border: .1rem solid rgba($green, 0.4);
       outline: none;
       &:focus {
          border-color: $green;
@@ -962,6 +962,120 @@ input[type=number] {
 
 
 //footer --------------------------------------------------
+.footer {
+   padding: 8.3rem 0;
+   border-top: .1rem solid rgba($green, .4);
+   background: url("../images/footer-bg.png") center / cover no-repeat;
+
+   &__body {}
+
+   &__content {
+      margin: 0 0 6rem 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 3rem;
+      font-size: 1.8rem;
+   }
+
+   &__logo {}
+
+   &__menu {}
+
+   &__menu, &__info {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+   }
+
+   &__menu-item {}
+
+   &__menu-link {
+      &:hover {
+         color: $orange;
+         transition: .3s;
+      }
+   }
+
+   &__info {}
+
+   &__contacts {
+      & > a {
+         display: block;
+         transition: .3s;
+         &:hover {
+            color: $orange;
+         }
+      }
+   }
+
+   &__tel {
+      font-size: 2.7rem;
+      margin: 0 0 3.9rem 0;
+   }
+   
+   &__email {
+      margin: 0 0 2.9rem 0;
+   }
+   
+
+   &__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba($green, .6);
+   }
+
+   &__copy {}
+
+   &__author {
+
+      a {
+         transition: .3s;
+         &:hover {
+            color: $green;
+         }
+      }
+   }
+}
+
+.socials {
+   display: flex;
+   gap: 3rem;
+
+   &__item {}
+
+   &__link {
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: .1rem solid $green;
+      border-radius: 50%;
+      opacity: .6;
+      transition: .3s;
+
+      &:hover {
+         opacity: 1;
+      }
+
+      &--vk {
+         background-size: 2.3rem;
+         background-image: url("../images/vk.svg");
+      }
+
+      &--instagram {
+         background-size: 1.8rem;
+         background-image: url("../images/instagram.svg");
+      }
+
+      &--facebook {
+         background-size: 1.8rem;
+         background-image: url("../images/facebook.svg");
+      }
+   }
+}
+
 //adaptive ------------------------------------------------
 
 @media (min-width: 1025px) {
