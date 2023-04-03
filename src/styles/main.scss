@@ -20,6 +20,7 @@ textarea {
 
 html {
    font-size: 10px;
+   font-size: 0.52vw;
    scroll-behavior: smooth;
 }
 
@@ -160,7 +161,25 @@ input[type=number] {
    line-height: 1.5em;
    max-width: 60ch;
    a {
-      text-decoration: underline;
+      position: relative;
+      &::after {
+         content: "";
+         position: absolute;
+         bottom: 0rem;
+         right: 0;
+         left: 0;
+         height: 0.1rem;
+         background-color: $green;
+         transition: .3s;
+      }
+      &:hover {
+         color: $orange;
+         &::after {
+            background-color: $orange;
+            right: 50%;
+            left: 50%;
+         }
+      }
    }
 }
 %button {
@@ -172,7 +191,8 @@ input[type=number] {
    border-radius: 6.5rem;
    background-color: #d26a22;
    box-shadow: 0 1rem 1.1rem .2rem rgba($orange, 0.2);
-   transition: .3s;
+   transition-property: box-shadow background-color;
+   transition-duration: .3s;
    &:hover {
       background-color: #bf601f;
       box-shadow: 0 1rem 1.1rem .2rem rgba($orange, 0.3);
@@ -189,7 +209,7 @@ input[type=number] {
 }
 %card-shadow {
    position: relative;
-   height: auto;
+   height: 100%;
    border-radius: 2rem;
    box-shadow: inset 0 0 0 .1rem rgba($green, 0.4);
    transition: box-shadow .3s;
@@ -226,7 +246,7 @@ input[type=number] {
       url("../images/beans.png"), 
       url("../images/pepper.png"),
       url("../images/hero-bg.png");
-   background-size: auto, auto, auto, auto, auto, cover;
+   background-size: 8.5rem, 19.1rem, 11rem, 11.8rem, 8.6rem, cover;
    background-position:
     69rem 0, 
     right -2rem top 4.4rem, 
@@ -375,11 +395,11 @@ input[type=number] {
 
 .swiper {
    overflow: initial;
-   
-   &-slide {
-      @extend %card-shadow;
-   }
       
+   &-slide {
+      height: auto;
+   }
+
    &-pagination {}
 
    &-navigation {
@@ -423,6 +443,7 @@ input[type=number] {
    }
 
    &__card {
+      @extend %card-shadow;
       padding: 8rem 16.5rem 4rem 4rem;
       min-height: 52rem;
       overflow: hidden;
@@ -885,6 +906,7 @@ input[type=number] {
          background-size: contain;
          background-repeat: no-repeat;
          width: 2.9rem;
+         height: 2.5rem;
          margin: 0 3.1rem 0 0;
       }
 
@@ -894,14 +916,12 @@ input[type=number] {
       &--tel {
          &::before {
             content: "";
-            height: 2.5rem;
             background-image: url("../images/tel.svg");
          }
       }
       &--email {
          &::before {
             content: "";
-            height: 1.9rem;
             background-image: url("../images/email.svg");
          }
       }
@@ -910,6 +930,11 @@ input[type=number] {
    &__link {
       font-size: 2.4rem;
       font-weight: 500;
+      transition: .3s;
+
+      &:hover {
+         color: $orange;
+      }
    }
 }
 
@@ -938,6 +963,7 @@ input[type=number] {
       border-radius: 2rem;
       border: .1rem solid rgba($green, 0.4);
       outline: none;
+      transition: border .3s;
       &:focus {
          border-color: $green;
       }
@@ -967,7 +993,14 @@ input[type=number] {
    border-top: .1rem solid rgba($green, .4);
    background: url("../images/footer-bg.png") center / cover no-repeat;
 
-   &__body {}
+   &__body {
+      a {
+         transition: .3s;
+         &:hover {
+            color: $orange;
+         }
+      }
+   }
 
    &__content {
       margin: 0 0 6rem 0;
@@ -977,7 +1010,10 @@ input[type=number] {
       font-size: 1.8rem;
    }
 
-   &__logo {}
+   &__logo {
+      width: 17.9rem;
+      height: 4.8rem;
+   }
 
    &__menu {}
 
@@ -989,22 +1025,13 @@ input[type=number] {
 
    &__menu-item {}
 
-   &__menu-link {
-      &:hover {
-         color: $orange;
-         transition: .3s;
-      }
-   }
+   &__menu-link {}
 
    &__info {}
 
    &__contacts {
       & > a {
          display: block;
-         transition: .3s;
-         &:hover {
-            color: $orange;
-         }
       }
    }
 
