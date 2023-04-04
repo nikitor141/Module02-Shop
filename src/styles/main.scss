@@ -1,12 +1,34 @@
 @import "fonts";
 @import "reset";
 
+
+
 //variables -----------------------------------------------
 
 $green: #27300f;
 $orange: #d26a22;
 
-//---------------------------------------------------------
+//keyframes -----------------------------------------------
+
+@keyframes plateShadow {
+   0% {
+      box-shadow: 2rem 2rem 3.3rem 0 rgba($green, 0.5);
+   }
+   25% {
+      box-shadow: 2rem -2rem 3.3rem 0 rgba($green, 0.5);
+   }
+   50% {
+      box-shadow: -2rem -2rem 3.3rem 0 rgba($green, 0.5);
+   }
+   75% {
+      box-shadow: -2rem 2rem 3.3rem 0 rgba($green, 0.5);
+   }
+   100% {
+      box-shadow: 2rem 2rem 3.3rem 0 rgba($green, 0.5);
+   }
+}
+
+// --------------------------------------------------------
 
 img {
    max-width: 100%;
@@ -292,7 +314,7 @@ input[type=number] {
 
    &__plate-image {
       img {
-         box-shadow: 3.5rem 2.5rem 8rem -2rem rgba($green, 0.5);
+         animation: plateShadow 12s infinite linear;
          border-radius: 50%;
          width: 60.9rem;
       }
@@ -326,11 +348,14 @@ input[type=number] {
    }
 
    &__logo {
-      width: 12rem;
+      flex-basis: 12rem;
       height: 3.2rem;
    }
 
-   &__menu {}
+   &__menu {
+      flex-grow: 1;
+      margin: 0 0 0 4rem;
+   }
 
    &__menu-list {
       display: flex;
@@ -351,7 +376,9 @@ input[type=number] {
 
    &__tel {
       flex-shrink: 0;
+      flex-basis: 16rem;
       font-weight: 500;
+      letter-spacing: .13rem;
       transition: .3s;
 
       &:hover {
@@ -362,7 +389,7 @@ input[type=number] {
    &__cart {
       flex-shrink: 0;
       position: relative;
-      width: 4rem;
+      flex-basis: 4rem;
       height: 4rem;
       border-radius: 50%;
       background: $orange url('../images/cart.svg') center / 1.55rem no-repeat;
@@ -375,7 +402,7 @@ input[type=number] {
 
    &__cart-counter {
       position: absolute;
-      top: .6rem;
+      top: .5rem;
       right: .8rem;
       color: white;
       font-size: .8rem;
