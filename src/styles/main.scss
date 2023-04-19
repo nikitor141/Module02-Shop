@@ -837,7 +837,6 @@ input[type=number] {
    display: flex;
    flex-direction: column;
    background-repeat: no-repeat;
-   transition: background-position .6s ease-out;
    background-image: 
       url("../images/cucumber.png"),
       url("../images/avocado.png"), 
@@ -1356,7 +1355,6 @@ input[type=number] {
    &__image {
       @include tabletReset {
          position: absolute;
-         // top: rem(1);
          bottom: rem(1);
          right: rem(1);
          max-width: calc(100% - rem(2));

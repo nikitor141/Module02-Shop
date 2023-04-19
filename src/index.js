@@ -105,6 +105,7 @@ let styles = () => {
          let ratio = 0.002;
 
          bgShiftingEl.style.backgroundPosition = `${69 + x * ratio}rem -4.5rem, right ${-2 + x * ratio}rem top ${4.4 + y * ratio}rem, right ${12.2 + x * ratio}rem bottom ${0 + y * ratio}rem, left 0 bottom ${4.7 + y * ratio}rem, ${3.8 + x * ratio}rem 40%`;
+         bgShiftingEl.style.transition = 'background-position .6s ease-out';
       });
       bgShiftingEl.addEventListener('mouseout', () => {
          bgShiftingEl.removeAttribute('style')
