@@ -37,7 +37,7 @@ allSliders.forEach(slider => {
 
 
 document.querySelector('.burger').addEventListener('click', function () {
-   let elmsToActive = [this.querySelector('.burger__body'), document.body, document.querySelector('.header__menu-list')];
+   let elmsToActive = [this, document.body, document.querySelector('.header__menu-list')];
    elmsToActive.forEach(item => {
       item.classList.toggle('active');
    });
@@ -95,32 +95,43 @@ document.querySelectorAll('.product-card__counter').forEach(counter => {
       }
    })
 });
-if (window.innerWidth >= 1024) {
 
-   let bgShiftingEl = document.querySelector('.fullscreen');
-   bgShiftingEl.addEventListener('mousemove', e => {
-      let x = e.clientX;
-      let y = e.clientY;
-      let ratio = 0.002;
+let styles = () => {
+   if (window.innerWidth >= 1024) {
+      let bgShiftingEl = document.querySelector('.fullscreen');
+      bgShiftingEl.addEventListener('mousemove', e => {
+         let x = e.clientX;
+         let y = e.clientY;
+         let ratio = 0.002;
 
-      bgShiftingEl.style.backgroundPosition = `${69 + x * ratio}rem -4.5rem, right ${-2 + x * ratio}rem top ${4.4 + y * ratio}rem, right ${12.2 + x * ratio}rem bottom ${0 + y * ratio}rem, left 0 bottom ${4.7 + y * ratio}rem, ${3.8 + x * ratio}rem 40%`;
-   });
-   bgShiftingEl.addEventListener('mouseout', e => {
-      bgShiftingEl.removeAttribute('style')
-   })
-
-   document.querySelectorAll('.offer__card-content').forEach(item => {
-      let titleRemHeight = item.querySelector('.offer__card-title').offsetHeight / 10;
-      item.style.transform = `translateY(calc(100% - ${titleRemHeight}rem))`;
-   })
-}
-if (window.innerWidth <= 530) {
-   document.querySelectorAll('.product-card').forEach(productCard => {
-      const button = productCard.querySelector('.product-card__button');
-      const counter = productCard.querySelector('.product-card__counter');
-      button.addEventListener('click', e => {
-         counter.style.display = 'flex';
+         bgShiftingEl.style.backgroundPosition = `${69 + x * ratio}rem -4.5rem, right ${-2 + x * ratio}rem top ${4.4 + y * ratio}rem, right ${12.2 + x * ratio}rem bottom ${0 + y * ratio}rem, left 0 bottom ${4.7 + y * ratio}rem, ${3.8 + x * ratio}rem 40%`;
+      });
+      bgShiftingEl.addEventListener('mouseout', () => {
+         bgShiftingEl.removeAttribute('style')
       });
 
-   });
+      document.querySelectorAll('.offer__card-content').forEach(item => {
+         let titleRemHeight = item.querySelector('.offer__card-title').offsetHeight / 10;
+         item.style.transform = `translateY(calc(100% - ${titleRemHeight}rem))`;
+      });
+   }
+   else {
+      document.querySelectorAll('.offer__card-content').forEach(item => {
+         item.removeAttribute('style');
+      });
+   }
+   if (window.innerWidth <= 530) {
+      document.querySelectorAll('.product-card').forEach(productCard => {
+         const button = productCard.querySelector('.product-card__button');
+         const counter = productCard.querySelector('.product-card__counter');
+         button.addEventListener('click', () => {
+            counter.style.display = 'flex';
+         });
+
+      });
+   }
 }
+styles();
+window.addEventListener('resize', () => {
+   styles();
+})
