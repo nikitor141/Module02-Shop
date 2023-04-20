@@ -48,9 +48,22 @@
                      </button>
                   </nav>
                   <a class="header__tel" href="tel:+79453425555">+7 945 342 55 55</a>
-                  <button class="header__cart" aria-label="Корзина.">
-                     <span class="header__cart-counter">0</span>
-                  </button>
+                  <div class="header__cart-wrapper">
+                     <button class="header__cart" title="Корзина">
+                        <span class="header__cart-counter">0</span>
+                     </button>
+                     <div class="cart-notification">
+                        <div class="cart-notification__image">
+                           <img src="images/catalog/milk.png" alt="Молоко" width="60" height="65">
+                        </div>
+                        <div class="cart-notification__text">
+                           <p class="cart-notification__title">Вы добавили в корзину</p>
+                           <p class="cart-notification__name">Молоко топленое</p>
+                        </div>
+                        <button class="cart-notification__close" title="Закрыть"></button>
+                     </div>
+                  </div>
+
                </div>
             </div>
          </header>
@@ -69,27 +82,51 @@
                      <div class="hero__plate-image">
                         <img src="images/plate.png" alt="Тарелка с едой" width="609" height="606">
                      </div>
-                     <button class="hero__plate-item hero__plate-item--one">
-                        <span class="hero__plate-info">
-                           <span class="hero__plate-ingredient">Авокадо</span>
-                           <span class="hero__plate-price">134 руб</span>
-                        </span>
-                        <span class="hero__plate-dot"></span>
-                     </button>
-                     <button class="hero__plate-item hero__plate-item--two">
-                        <span class="hero__plate-info">
-                           <span class="hero__plate-ingredient">Картофель</span>
-                           <span class="hero__plate-price">169 руб</span>
-                        </span>
-                        <span class="hero__plate-dot"></span>
-                     </button>
-                     <button class="hero__plate-item hero__plate-item--three">
-                        <span class="hero__plate-info">
-                           <span class="hero__plate-ingredient">Томаты</span>
-                           <span class="hero__plate-price">215 руб</span>
-                        </span>
-                        <span class="hero__plate-dot"></span>
-                     </button>
+                     <div class="hero__plate-item-wrapper hero__plate-item-wrapper--one">
+                        <button class="hero__plate-item">
+                           <span class="hero__plate-info">
+                              <span class="hero__plate-ingredient">Авокадо</span>
+                              <span class="hero__plate-price">134 руб</span>
+                           </span>
+                           <span class="hero__plate-dot"></span>
+                        </button>
+                        <div class="hero__plate-popup">
+                           <h3 class="hero__plate-popup-title">Авокадо</h3>
+                           <p class="hero__plate-popup-description">Авокадо, Свежий урожай, 1кг</p>
+                           <p class="hero__plate-popup-price">134&nbsp;руб/кг</p>
+                           <button class="hero__plate-popup-close" title="Закрыть"></button>
+                        </div>
+                     </div>
+                     <div class="hero__plate-item-wrapper hero__plate-item-wrapper--two">
+                        <button class="hero__plate-item">
+                           <span class="hero__plate-info">
+                              <span class="hero__plate-ingredient">Картофель</span>
+                              <span class="hero__plate-price">169 руб</span>
+                           </span>
+                           <span class="hero__plate-dot"></span>
+                        </button>
+                        <div class="hero__plate-popup">
+                           <h3 class="hero__plate-popup-title">Картофель</h3>
+                           <p class="hero__plate-popup-description">Картофель Молодой, Свежий урожай, 1кг</p>
+                           <p class="hero__plate-popup-price">169&nbsp;руб/кг</p>
+                           <button class="hero__plate-popup-close" title="Закрыть"></button>
+                        </div>
+                     </div>
+                     <div class="hero__plate-item-wrapper hero__plate-item-wrapper--three">
+                        <button class="hero__plate-item">
+                           <span class="hero__plate-info">
+                              <span class="hero__plate-ingredient">Томаты</span>
+                              <span class="hero__plate-price">215 руб</span>
+                           </span>
+                           <span class="hero__plate-dot"></span>
+                        </button>
+                        <div class="hero__plate-popup">
+                           <h3 class="hero__plate-popup-title">Томаты</h3>
+                           <p class="hero__plate-popup-description">Томаты, Свежий урожай, 1кг</p>
+                           <p class="hero__plate-popup-price">215&nbsp;руб/кг</p>
+                           <button class="hero__plate-popup-close" title="Закрыть"></button>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
