@@ -858,8 +858,10 @@ input[type=number] {
 
    &.active {
       opacity: 1;
-      top: 105%;
       visibility: visible;
+      @include tablet {
+         top: 105%;
+      }
    }
    @include tabletReset {
       &::before {
