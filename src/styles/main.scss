@@ -842,7 +842,7 @@ input[type=number] {
    padding: rem(15) rem(42) rem(15) rem(15);
    border-radius: rem(20);
    background-color: white;
-   box-shadow: 0 7px 32px 8px rgba($green, 0.1);
+   box-shadow: 0 rem(7) rem(32) rem(8) rgba($green, 0.1);
    opacity: 0;
    visibility: hidden;
    transition-property: opacity, visibility, top;
@@ -1166,7 +1166,7 @@ input[type=number] {
       width: rem(240);
       padding: rem(30) rem(70) rem(30) rem(30);
       background-color: white;
-      box-shadow: 0 7px 32px 8px rgba($green, 0.1);
+      box-shadow: 0 rem(7) rem(32) rem(8) rgba($green, 0.1);
       border-radius: rem(30);
       transition-property: visibility, opacity;
       transition-duration: .3s;
