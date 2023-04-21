@@ -848,21 +848,16 @@ input[type=number] {
    transition-property: opacity, visibility, top;
    transition-duration: .3s;
    gap: rem(15);
-
+   
    @include tablet {
       width: 95%;
       right: 50%;
       top: 0;
       transform: translateX(50%);
+      transition-duration: .4s;
+      transition-timing-function: cubic-bezier(.8,-1,.35,2);
    }
 
-   &.active {
-      opacity: 1;
-      visibility: visible;
-      @include tablet {
-         top: 105%;
-      }
-   }
    @include tabletReset {
       &::before {
          content: "";
@@ -871,6 +866,14 @@ input[type=number] {
          right: rem(54);
          border: rem(8) solid transparent;
          border-bottom: rem(14) solid white;
+      }
+   }
+
+   &.active {
+      opacity: 1;
+      visibility: visible;
+      @include tablet {
+         top: 105%;
       }
    }
 
